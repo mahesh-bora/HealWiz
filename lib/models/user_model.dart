@@ -1,12 +1,4 @@
-// To parse this JSON data, do
-//
-//     final userData = userDataFromJson(jsonString);
-
-import 'dart:convert';
-
-UserData userDataFromJson(String str) => UserData.fromJson(json.decode(str));
-
-String userDataToJson(UserData data) => json.encode(data.toJson());
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class UserData {
   final String? id;
@@ -41,4 +33,13 @@ class UserData {
         "name": name,
         "bio": bio,
       };
+
+  factory UserData.fromSnapshot(
+      DocumentSnapshot<Map<String, dynamic>> snapshot) {
+    return UserData(
+      id: snapshot.id,
+      name: snapshot["name"],
+      bio: snapshot["bio"],
+    );
+  }
 }

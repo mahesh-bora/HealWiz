@@ -3,8 +3,7 @@ import 'dart:async';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:healwiz/Screens/home.dart';
-
-import 'login.dart';
+import 'package:healwiz/Screens/onboarding_screen.dart';
 
 class Splash extends StatefulWidget {
   const Splash({super.key});
@@ -40,7 +39,7 @@ class _SplashState extends State<Splash> {
           // If the user is not logged in, navigate to the sign in screen
           Navigator.pushReplacement(
             context,
-            MaterialPageRoute(builder: (context) => SignInScreen()),
+            MaterialPageRoute(builder: (context) => IntroductionPageView()),
           );
         }
       },
@@ -53,8 +52,8 @@ class _SplashState extends State<Splash> {
       backgroundColor: Colors.white,
       body: Center(
         child: Container(
-          height: 400,
-          width: 300,
+          height: 300,
+          width: 200,
           decoration: const BoxDecoration(
             image: DecorationImage(
               image: AssetImage('assets/logo.png'),

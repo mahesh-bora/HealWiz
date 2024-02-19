@@ -28,22 +28,22 @@ class _HomeState extends State<Home> {
     return Scaffold(
         bottomNavigationBar: BottomNavigationBar(
           onTap: onTap,
-          backgroundColor: const Color(0xFF4B72F7),
+          backgroundColor: Colors.deepPurple,
           currentIndex: cIndex,
           selectedFontSize: 0,
           unselectedFontSize: 0,
           selectedItemColor: Colors.white,
-          unselectedItemColor: Colors.grey.withOpacity(0.5),
+          unselectedItemColor: Colors.grey.withOpacity(0.8),
           showSelectedLabels: false,
           showUnselectedLabels: false,
           elevation: 0,
           items: const [
             BottomNavigationBarItem(
-                backgroundColor: Color(0xFF4B72F7),
+                // backgroundColor: Colors.deepPurple,
                 label: ("Home"),
                 icon: Icon(Icons.home)),
             BottomNavigationBarItem(
-                backgroundColor: Color(0xFF4B72F7),
+                // backgroundColor: Color(0xFF4B72F7),
                 label: ("Profile"),
                 icon: Icon(Icons.person_rounded)),
           ],

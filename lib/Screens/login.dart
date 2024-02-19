@@ -154,7 +154,7 @@ class _SignInScreenState extends State<SignInScreen> {
                       }
                     },
                     text: 'LogIn',
-                    bgColor: AppColor.kPrimary,
+                    bgColor: AppColor.bgColor,
                     borderRadius: 20,
                     height: 46,
                     width: 327,
