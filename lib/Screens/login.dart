@@ -65,7 +65,7 @@ class _SignInScreenState extends State<SignInScreen> {
                 style: GoogleFonts.plusJakartaSans(
                   fontSize: 20,
                   fontWeight: FontWeight.w600,
-                ).copyWith(color: AppColor.kGrayscaleDark100, fontSize: 20),
+                ).copyWith(color: AppColor.kGrayscaleDark100, fontSize: 24),
               ),
               const SizedBox(height: 8),
               Text(
@@ -606,7 +606,7 @@ class PasswordTextField extends StatefulWidget {
 }
 
 class _PasswordTextFieldState extends State<PasswordTextField> {
-  bool _obscureText = false;
+  bool _obscureText = true;
   @override
   Widget build(BuildContext context) {
     InputBorder enabledBorder = InputBorder.none;

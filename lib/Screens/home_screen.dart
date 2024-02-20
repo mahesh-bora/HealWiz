@@ -198,6 +198,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                     ),
                                   ),
                                   CircularPercentIndicator(
+                                    animation: true,
+                                    animationDuration: 2000,
                                     radius: 80.0,
                                     lineWidth: 12.0,
                                     percent: _healthData.isNotEmpty
@@ -238,7 +240,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   child: Text(
                                     _healthData.isNotEmpty
                                         ? _healthData
-                                        : 'Your image is being processed\n Thanks for your patience:)',
+                                        : 'We are this accurate with our response',
                                     style: TextStyle(
                                       fontSize: 16,
                                       color: Colors.black54,
@@ -284,24 +286,30 @@ class _HomeScreenState extends State<HomeScreen> {
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             Text(
-                              'Gemini Response:',
+                              'Let\'s see what Gemini says:',
                               style: TextStyle(
                                 color: Colors.black,
-                                fontSize: 20,
+                                fontSize: 19,
                                 fontWeight: FontWeight.bold,
                               ),
+                            ),
+                            SizedBox(
+                              height: 10,
                             ),
                             // Loading indicator for Gemini processing
                             if (_geminiProcessing)
                               Lottie.asset("assets/animation.json"),
+                            SizedBox(
+                              height: 5,
+                            ),
                             Text(
                               _geminiProcessing
                                   ? 'Gemini will respond shortly...'
                                   : (_geminiResponse.isNotEmpty
                                       ? _geminiResponse
-                                      : 'Waiting for input...'),
+                                      : 'Waiting for disease identification...'),
                               style: TextStyle(
-                                fontSize: 16,
+                                fontSize: 14,
                                 color: Colors.black54,
                               ),
                             ),

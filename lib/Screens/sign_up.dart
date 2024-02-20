@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -221,7 +219,7 @@ class SignUpScreen extends StatelessWidget {
                       //------To Here
                     },
                     text: 'Create Account',
-                    bgColor: AppColor.kPrimary,
+                    bgColor: AppColor.bgColor,
                     borderRadius: 20,
                     height: 46,
                     width: 327,

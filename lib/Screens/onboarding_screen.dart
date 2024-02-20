@@ -44,7 +44,7 @@ class _IntroductionPageViewState extends State<IntroductionPageView> {
                   Container(
                     margin: const EdgeInsets.fromLTRB(15, 40, 15, 10),
                     width: 500,
-                    height: 350,
+                    height: 325,
                     child: CustomAnimatedWidget(
                       index: index,
                       delay: 100,
@@ -109,7 +109,9 @@ class _IntroductionPageViewState extends State<IntroductionPageView> {
                   });
                 },
               ),
-              const Spacer(),
+              const SizedBox(
+                height: 90,
+              ),
               currentIndex == 2
                   ? Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 24),
@@ -209,19 +211,19 @@ class Items {
 List<Items> listOfItems = [
   Items(
     img: "assets/1.png",
-    title: "Discover the best medical school and job",
-    subTitle:
-        "There are 25.000+ best medical jobs and schools, choose your choice now",
+    title: "Welcome to HealWiz!",
+    subTitle: "Revolutionize the way you manage your health, starting now",
   ),
   Items(
     img: "assets/2.png",
-    title: "Share your training programs",
+    title: "Explore Advanced Healthcare Solutions",
     subTitle:
-        "There will be many people who want hear your stories and experiences",
+        "Access all essential healthcare tools in one convenient place- no more switching between the apps!",
   ),
   Items(
     img: "assets/3.png",
-    title: "Find another doctor near you",
-    subTitle: "Make your friendship and create a new community",
+    title: " Instant Disease Analysis",
+    subTitle:
+        "Scan images for accurate disease identification and personalized prescriptions.",
   ),
 ];

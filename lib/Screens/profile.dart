@@ -68,10 +68,16 @@ class _ProfileScreenState extends State<ProfileScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              const CircleAvatar(
-                radius: 100.0,
-                // You can use a placeholder image here
-                backgroundImage: AssetImage('assets/maheshbora.jpg'),
+              Container(
+                width: 200.0, // Adjust width as needed
+                height: 200.0, // Adjust height as needed
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  image: DecorationImage(
+                    fit: BoxFit.cover,
+                    image: AssetImage('assets/maheshbora.jpg'),
+                  ),
+                ),
               ),
               SizedBox(height: 20),
               Text(
