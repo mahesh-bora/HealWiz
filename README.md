@@ -34,7 +34,16 @@ We chose **Flutter** for its cross-platform compatibility and smooth UI developm
 </div>
 
 
-## 🔗Backend Link - https://github.com/yagyesh-bobde/healwiz-backend
+## 🔗Backend Link 
+A Flask based backend with machine learning models made with Tensorflow (and also for pre-built models references are given)
+- Flask
+- Python
+- Tensorflow
+- Keras
+ 
+<br/>
+
+https://github.com/yagyesh-bobde/healwiz-backend
 
 
 ## 💻Installation
@@ -65,8 +74,6 @@ Flutter pub get and run
   flutter pub get
   flutter run
 ```
-
-
 
 
 ## 📄License
