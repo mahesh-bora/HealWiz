@@ -33,13 +33,13 @@ class _HomeScreenState extends State<HomeScreen> {
   String _selectedType = 'skin'; // Default to skin
 
   String apiUrl = dotenv.env['API_URL'] ?? 'http://10.0.2.2:5000';
-  String? geminiAPIKEY = dotenv.env['GEMINI_API_KEY'];
+  String geminiAPIKEY = dotenv.env['GEMINI_API_KEY'] ?? ' ';
 
   @override
   void initState() {
     super.initState();
     _loadUserData();
-    Gemini.init(apiKey: 'AIzaSyBjkBbYP0a4EeH6ZK97AS3dxDt62ZrTCjo');
+    Gemini.init(apiKey: geminiAPIKEY);
   }
 
   Future<void> _loadUserData() async {
@@ -361,7 +361,7 @@ class _HomeScreenState extends State<HomeScreen> {
       var body = {'url': base64Image};
 
       // Use the selected type in the API endpoint
-      String apiUrl = 'http://10.0.2.2:5000/predict_$_selectedType';
+      String apiUrl = 'apiUrl/predict_$_selectedType';
 
       // Start loading before making the API call
       setState(() {
