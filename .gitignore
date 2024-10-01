@@ -41,3 +41,17 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+
+# Ignore local environment settings
+.env
+.env.*
+*.env
+
+# Firebase configuration files
+firebase_options.dart
+google-services.json
+ios/Runner/GoogleService-Info.plist
+android/app/google-services.json
+
+# Flutterfire related
+.dart_tool/flutter_build/firebase_options.json

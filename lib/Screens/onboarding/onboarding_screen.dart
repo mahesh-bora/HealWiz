@@ -1,8 +1,9 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:healwiz/Screens/login.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+
+import '../auth/login.dart';
 
 class IntroductionPageView extends StatefulWidget {
   const IntroductionPageView({Key? key}) : super(key: key);

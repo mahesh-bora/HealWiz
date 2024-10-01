@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../themes/theme.dart';
+import '../../themes/theme.dart';
 import 'login.dart';
 
 class SignUpScreen extends StatelessWidget {
@@ -240,38 +240,6 @@ class SignUpScreen extends StatelessWidget {
                             fontSize: 14),
                   )
                 ],
-              ),
-              const SizedBox(height: 30),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 40),
-                child: Column(
-                  children: [
-                    const Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 15),
-                      child: DividerRow(title: 'Or Sign Up with'),
-                    ),
-                    const SizedBox(height: 24),
-                    SecondaryButton(
-                        height: 56,
-                        textColor: AppColor.kGrayscaleDark100,
-                        width: 260,
-                        onTap: () {},
-                        borderRadius: 24,
-                        bgColor: AppColor.kBackground.withOpacity(0.3),
-                        text: 'Continue with Google',
-                        icons: ImagesPath.kGoogleIcon),
-                  ],
-                ),
-              ),
-              const SizedBox(height: 23),
-              const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 40),
-                child: TermsAndPrivacyText(
-                  title1: '  By signing up you agree to our',
-                  title2: ' Terms ',
-                  title3: '  and',
-                  title4: ' Conditions of Use',
-                ),
               ),
             ]),
           ),
@@ -658,7 +626,7 @@ class PasswordTextField extends StatefulWidget {
 }
 
 class _PasswordTextFieldState extends State<PasswordTextField> {
-  bool _obscureText = false;
+  bool _obscureText = true;
   @override
   Widget build(BuildContext context) {
     InputBorder enabledBorder = InputBorder.none;

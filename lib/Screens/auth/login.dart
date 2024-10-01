@@ -2,10 +2,10 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:healwiz/Screens/sign_up.dart';
+import 'package:healwiz/Screens/auth/sign_up.dart';
 
-import '../themes/theme.dart';
-import 'home.dart';
+import '../../themes/theme.dart';
+import '../home/home.dart';
 
 class SignInScreen extends StatefulWidget {
   SignInScreen({super.key});
@@ -46,7 +46,13 @@ class _SignInScreenState extends State<SignInScreen> {
   }
 
   @override
+  @override
   Widget build(BuildContext context) {
+    // Retrieve the size of the screen
+    var screenSize = MediaQuery.of(context).size;
+    double screenWidth = screenSize.width;
+    double screenHeight = screenSize.height;
+
     return Scaffold(
       backgroundColor: AppColor.kWhite,
       appBar: AppBar(
@@ -57,167 +63,160 @@ class _SignInScreenState extends State<SignInScreen> {
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 24),
           child: SizedBox(
-            width: 327,
-            child: Column(children: [
-              Text(
-                'Hi, Welcome Back! 👋',
-                textAlign: TextAlign.center,
-                style: GoogleFonts.plusJakartaSans(
-                  fontSize: 20,
-                  fontWeight: FontWeight.w600,
-                ).copyWith(color: AppColor.kGrayscaleDark100, fontSize: 24),
-              ),
-              const SizedBox(height: 8),
-              Text(
-                'We happy to see you. Sign In to your account',
-                textAlign: TextAlign.center,
-                style: GoogleFonts.plusJakartaSans(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w500,
-                        color: AppColor.kWhite)
-                    .copyWith(color: AppColor.kGrayscale40, fontSize: 14),
-              ),
-              const SizedBox(height: 36),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'Email',
-                    style: GoogleFonts.plusJakartaSans(
-                            fontSize: 14,
-                            fontWeight: FontWeight.w500,
-                            color: AppColor.kWhite)
-                        .copyWith(
-                            color: AppColor.kGrayscaleDark100,
-                            fontWeight: FontWeight.w600,
-                            fontSize: 14),
-                  ),
-                  const SizedBox(
-                    height: 8,
-                  ),
-                  PrimaryTextFormField(
+            width: screenWidth * 0.9, // Adjust width relative to screen size
+            child: Column(
+              children: [
+                Text(
+                  'Hi, Welcome Back! 👋',
+                  textAlign: TextAlign.center,
+                  style: GoogleFonts.plusJakartaSans(
+                    fontSize: screenWidth * 0.06, // Responsive font size
+                    fontWeight: FontWeight.w600,
+                  ).copyWith(
+                      color: AppColor.kGrayscaleDark100,
+                      fontSize: screenWidth * 0.06),
+                ),
+                SizedBox(height: screenHeight * 0.01),
+                Text(
+                  'We are happy to see you. Sign In to your account',
+                  textAlign: TextAlign.center,
+                  style: GoogleFonts.plusJakartaSans(
+                          fontSize: screenWidth * 0.04,
+                          fontWeight: FontWeight.w500,
+                          color: AppColor.kWhite)
+                      .copyWith(
+                          color: AppColor.kGrayscale40,
+                          fontSize: screenWidth * 0.04),
+                ),
+                SizedBox(height: screenHeight * 0.04),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Email',
+                      style: GoogleFonts.plusJakartaSans(
+                        fontSize: screenWidth * 0.04,
+                        fontWeight: FontWeight.w600,
+                        color: AppColor.kGrayscaleDark100,
+                      ),
+                    ),
+                    SizedBox(height: screenHeight * 0.01),
+                    PrimaryTextFormField(
                       borderRadius: BorderRadius.circular(24),
                       hintText: 'abc@gmail.com',
                       controller: emailC,
-                      width: 327,
-                      height: 52)
-                ],
-              ),
-              const SizedBox(
-                height: 16,
-              ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'Password',
-                    style: GoogleFonts.plusJakartaSans(
-                            fontSize: 14,
-                            fontWeight: FontWeight.w500,
-                            color: AppColor.kWhite)
-                        .copyWith(
-                            color: AppColor.kGrayscaleDark100,
-                            fontWeight: FontWeight.w600,
-                            fontSize: 14),
-                  ),
-                  const SizedBox(height: 8),
-                  PasswordTextField(
+                      width: screenWidth * 0.9, // Adjust width
+                      height: screenHeight * 0.07, // Adjust height
+                    ),
+                  ],
+                ),
+                SizedBox(height: screenHeight * 0.02),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Password',
+                      style: GoogleFonts.plusJakartaSans(
+                        fontSize: screenWidth * 0.04,
+                        fontWeight: FontWeight.w600,
+                        color: AppColor.kGrayscaleDark100,
+                      ),
+                    ),
+                    SizedBox(height: screenHeight * 0.01),
+                    PasswordTextField(
                       borderRadius: BorderRadius.circular(24),
                       hintText: 'Password',
                       controller: passwordC,
-                      width: 327,
-                      height: 52)
-                ],
-              ),
-              const SizedBox(height: 16),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  PrimaryTextButton(
-                    onPressed: () {},
-                    title: 'Forgot Password?',
-                    textStyle: const TextStyle(),
-                  )
-                ],
-              ),
-              const SizedBox(height: 32),
-              Column(
-                children: [
-                  PrimaryButton(
-                    elevation: 0,
-                    onTap: () async {
-                      await _signInWithEmailAndPassword(); // Wait for authentication process to complete
-                      // Navigate to home screen only if authentication is successful
-                      if (_auth.currentUser != null) {
-                        Navigator.pushReplacement(context,
-                            MaterialPageRoute(builder: (context) => Home()));
-                      }
-                    },
-                    text: 'LogIn',
-                    bgColor: AppColor.bgColor,
-                    borderRadius: 20,
-                    height: 46,
-                    width: 327,
-                    textColor: AppColor.kWhite,
-                    fontSize: 14,
-                  ),
-                  const SizedBox(
-                    height: 24,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 4),
-                    child: CustomRichText(
-                      title: 'Don’t have an account?',
-                      subtitle: ' Create here',
-                      onTab: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => SignUpScreen()));
-                      },
-                      subtitleTextStyle: GoogleFonts.plusJakartaSans(
-                              fontSize: 14,
-                              fontWeight: FontWeight.w500,
-                              color: AppColor.kWhite)
-                          .copyWith(
-                              color: AppColor.kPrimary,
-                              fontWeight: FontWeight.w600,
-                              fontSize: 14),
+                      width: screenWidth * 0.9,
+                      height: screenHeight * 0.07,
                     ),
-                  )
-                ],
-              ),
-              const SizedBox(height: 32),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 45),
-                child: Column(
-                  children: [
-                    const DividerRow(title: 'Or Sign In with'),
-                    const SizedBox(height: 24),
-                    SecondaryButton(
-                        height: 56,
-                        textColor: AppColor.kGrayscaleDark100,
-                        width: 280,
-                        onTap: () {},
-                        borderRadius: 24,
-                        bgColor: AppColor.kBackground.withOpacity(0.3),
-                        text: 'Continue with Google',
-                        icons: ImagesPath.kGoogleIcon),
                   ],
                 ),
-              ),
-              const SizedBox(height: 50),
-              const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 40),
-                child: TermsAndPrivacyText(
-                  title1: '  By signing up you agree to our',
-                  title2: ' Terms ',
-                  title3: '  and',
-                  title4: ' Conditions of Use',
+                SizedBox(height: screenHeight * 0.02),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    PrimaryTextButton(
+                      onPressed: () {},
+                      title: 'Forgot Password?',
+                      textStyle: TextStyle(fontSize: screenWidth * 0.04),
+                    )
+                  ],
                 ),
-              ),
-              const SizedBox(height: 24),
-            ]),
+                SizedBox(height: screenHeight * 0.04),
+                Column(
+                  children: [
+                    PrimaryButton(
+                      elevation: 0,
+                      onTap: () async {
+                        await _signInWithEmailAndPassword();
+                        if (_auth.currentUser != null) {
+                          Navigator.pushReplacement(context,
+                              MaterialPageRoute(builder: (context) => Home()));
+                        }
+                      },
+                      text: 'Log In',
+                      bgColor: AppColor.bgColor,
+                      borderRadius: 20,
+                      height: screenHeight * 0.06,
+                      width: screenWidth * 0.9,
+                      textColor: AppColor.kWhite,
+                      fontSize: screenWidth * 0.04,
+                    ),
+                    SizedBox(height: screenHeight * 0.03),
+                    Padding(
+                      padding: EdgeInsets.only(left: screenWidth * 0.01),
+                      child: CustomRichText(
+                        title: 'Don’t have an account?',
+                        subtitle: ' Create here',
+                        onTab: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => SignUpScreen()));
+                        },
+                        subtitleTextStyle: GoogleFonts.plusJakartaSans(
+                          fontSize: screenWidth * 0.04,
+                          fontWeight: FontWeight.w600,
+                          color: AppColor.kPrimary,
+                        ),
+                      ),
+                    )
+                  ],
+                ),
+                SizedBox(height: screenHeight * 0.04),
+                // Padding(
+                //   padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.15),
+                //   child: Column(
+                //     children: [
+                //       DividerRow(title: 'Or Sign In with'),
+                //       SizedBox(height: screenHeight * 0.03),
+                //       SecondaryButton(
+                //         height: screenHeight * 0.07,
+                //         textColor: AppColor.kGrayscaleDark100,
+                //         width: screenWidth * 0.8,
+                //         onTap: () {},
+                //         borderRadius: 24,
+                //         bgColor: AppColor.kBackground.withOpacity(0.3),
+                //         text: 'Continue with Google',
+                //         icons: ImagesPath.kGoogleIcon,
+                //       ),
+                //     ],
+                //   ),
+                // ),
+                // SizedBox(height: screenHeight * 0.05),
+                // Padding(
+                //   padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.1),
+                //   child: TermsAndPrivacyText(
+                //     title1: '  By signing up you agree to our',
+                //     title2: ' Terms ',
+                //     title3: '  and',
+                //     title4: ' Conditions of Use',
+                //   ),
+                // ),
+                // SizedBox(height: screenHeight * 0.03),
+              ],
+            ),
           ),
         ),
       ),

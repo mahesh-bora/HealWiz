@@ -2,8 +2,8 @@ import 'dart:async';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:healwiz/Screens/home.dart';
-import 'package:healwiz/Screens/onboarding_screen.dart';
+import 'package:healwiz/Screens/home/home.dart';
+import 'package:healwiz/Screens/onboarding/onboarding_screen.dart';
 
 class Splash extends StatefulWidget {
   const Splash({super.key});

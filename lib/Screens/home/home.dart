@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:healwiz/Screens/profile.dart';
+import 'package:healwiz/Screens/history/records.dart';
 
+import '../trending-news/news.dart';
 import 'home_screen.dart';
 
 class Home extends StatefulWidget {
@@ -13,7 +14,8 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   List pages = [
     const HomeScreen(),
-    const ProfileScreen(),
+    ArticleListScreen(),
+    const PredictionHistoryScreen(),
   ];
 
   int cIndex = 0;
@@ -39,13 +41,15 @@ class _HomeState extends State<Home> {
           elevation: 0,
           items: const [
             BottomNavigationBarItem(
-                // backgroundColor: Colors.deepPurple,
-                label: ("Home"),
-                icon: Icon(Icons.home)),
+              label: ("Home"),
+              icon: Icon(Icons.document_scanner_outlined),
+            ),
             BottomNavigationBarItem(
-                // backgroundColor: Color(0xFF4B72F7),
-                label: ("Profile"),
-                icon: Icon(Icons.person_rounded)),
+              label: ("News"),
+              icon: Icon(Icons.newspaper_sharp),
+            ),
+            BottomNavigationBarItem(
+                label: ("History"), icon: Icon(Icons.history)),
           ],
         ),
         body: pages[cIndex]);
